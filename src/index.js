@@ -9,6 +9,14 @@ app.use(cors());
 
 const URL = 'https://hu.fuelo.net/?lang=en';
 
+const fuelNamesByPath = {
+   'unleaded_95': 'Unleaded 95',
+   'diesel': 'Diesel',
+   'lpg': 'LPG',
+   'unleaded_98': 'Unleaded 98',
+   'diesel_premium': 'Diesel Premium',
+};
+
 const fetchData = async () => {
    try {
       console.log('Fetching...');
@@ -60,30 +68,14 @@ app.get('/',  async (req, res) => {
    res.send(JSON.stringify(data));
 });
 
-app.get('/unleaded_95', async(req, res) => {
-   const data = await getType('Unleaded 95');
-   res.send(JSON.stringify(data));
-});
+app.get('/type/:fuelKey', async(req, res) => {
+   const { fuelKey } = req.params;
 
-app.get('/diesel', async(req, res) => {
-   const data = await getType('Diesel');
-   res.send(JSON.stringify(data));
-});
-
-app.get('/lpg', async(req, res) => {
-   const data = await getType('LPG');
-   res.send(JSON.stringify(data));
-});
-
-app.get('/unleaded_98', async(req, res) => {
-   const data = await getType('Unleaded 98');
-   res.send(JSON.stringify(data));
-});
-
-app.get('/diesel_premium', async(req, res) => {
-   const data = await getType('Diesel Premium');
-   res.send(JSON.stringify(data));
-});
+   if (fuelNamesByPath[fuelKey]) {
+      const data = await getType(fuelNamesByPath[fuelKey]);
+      res.send(JSON.stringify(data));
+   }
+})
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
