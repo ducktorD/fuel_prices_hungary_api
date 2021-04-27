@@ -4,7 +4,7 @@
 
 ## Usage
 
-Just go to the https://fuel-prices-hungary-api.vercel.app/ page if you need all data, but you can specify what you're looking for by changing the path. If you don't need all data just use the following paths:
+Just go to the https://fuel-prices-hungary-api.vercel.app/ page if you need all data, but you can specify what you're looking for by changing the path. If you don't need all data just use the /type and after the following paths:
 
 | Path            | Value          |
 | :-------------- | -------------: |
@@ -14,4 +14,5 @@ Just go to the https://fuel-prices-hungary-api.vercel.app/ page if you need all 
 | /unleaded_98    | Unleaded 98    |
 | /diesel_premium | Diesel Premium |
 
-(e.g.: if you only interested in diesel then: https://fuel-prices-hungary-api.vercel.app/diesel)
+/type/<your_fuel_type>
+(e.g.: if you only interested in diesel then: https://fuel-prices-hungary-api.vercel.app/type/diesel)
