@@ -75,7 +75,7 @@ app.get('/type/:fuelKey', async(req, res) => {
       const data = await getType(fuelNamesByPath[fuelKey]);
       res.send(JSON.stringify(data));
    }
-})
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
